@@ -1,0 +1,24 @@
+{
+  "name": "generator-harp-gh-pages",
+  "version": "0.0.0",
+  "description": "Generate a harp project with GitHub Pages and Circle CI",
+  "author": "Kengo Hamasaki <k.hamasaki@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://git@github.com/hmsk/generator-harp-gh-pages.git"
+  },
+  "files": [
+    "generators/app"
+  ],
+  "keywords": [
+    "yeoman-generator",
+    "harp",
+    "gh-pages",
+    "circleci"
+  ],
+  "dependencies": {
+    "yeoman-generator": "^0.23.4",
+    "yosay": "^1.2.0"
+  }
+}
