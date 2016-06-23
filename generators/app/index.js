@@ -17,6 +17,24 @@ var HarpGhPagesGenerator = yeoman.Base.extend({
         default : false
       },
       {
+        type    : 'list',
+        name    : 'css',
+        message : 'Which CSS preprocessors do you use?',
+        choices : ['LESS', 'Stylus', 'Sass'],
+        filter  : function(val) {
+          return val.toLowerCase();
+        }
+      },
+      {
+        type    : 'list',
+        name    : 'html',
+        message : 'Which HTML preprocessors do you use?',
+        choices : ['EJS', 'Jade', 'Markdown'],
+        filter  : function(val) {
+          return val.toLowerCase();
+        }
+      },
+      {
         type    : 'confirm',
         name    : 'custom_domain',
         message : 'Would you like to configure your custom domain for GitHub Pages?',
@@ -35,6 +53,8 @@ var HarpGhPagesGenerator = yeoman.Base.extend({
 
     return this.prompt(prompts).then(function(answers) {
       this.name = answers.name;
+      this.css = answers.css;
+      this.html = answers.html;
       this.circleci = answers.circleci;
       this.cname = answers.cname;
     }.bind(this));
