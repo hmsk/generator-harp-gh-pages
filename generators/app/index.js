@@ -71,9 +71,11 @@ var HarpGhPagesGenerator = yeoman.Base.extend({
       { "src": "gitignore", "dest": ".gitignore" },
       { "src": "package.json" },
       { "src": "bin" },
-      { "src": "src/index.jade" },
+      { "src": "src/index.jade", "when": this.html === 'jade' },
+      { "src": "src/index.ejs", "when": this.html === 'ejs' },
+      { "src": "src/_layout.jade", "when": this.html === 'jade' },
+      { "src": "src/_layout.ejs", "when": this.html === 'ejs' },
       { "src": "src/main.less" },
-      { "src": "src/_layout.jade" },
       { "src": "circle.yml", "when": this.circleci },
       { "src": "src/circle.yml", "when": this.circleci },
       { "src": "src/CNAME", "when": typeof this.cname === 'string' }
