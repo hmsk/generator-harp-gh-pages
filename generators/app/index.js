@@ -24,7 +24,7 @@ var HarpGhPagesGenerator = yeoman.Base.extend({
         type    : 'list',
         name    : 'html',
         message : 'Which HTML preprocessors do you use?',
-        choices : ['EJS', 'Jade', 'Markdown'],
+        choices : ['EJS', 'Jade'],
         filter  : function(val) {
           return val.toLowerCase();
         }
