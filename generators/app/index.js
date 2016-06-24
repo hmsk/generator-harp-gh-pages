@@ -114,4 +114,4 @@ var HarpGhPagesGenerator = yeoman.Base.extend({
   }
 });
 
-module.exports = HarpGhPagesGenerator
+module.exports = HarpGhPagesGenerator;
