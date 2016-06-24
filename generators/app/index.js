@@ -1,5 +1,6 @@
 var yeoman = require('yeoman-generator');
 var yosay = require('yosay');
+var mkdirp = require('mkdirp');
 
 var HarpGhPagesGenerator = yeoman.Base.extend({
   prompting: function () {
@@ -65,10 +66,29 @@ var HarpGhPagesGenerator = yeoman.Base.extend({
   },
 
   writing: function () {
-    this.fs.copy(
-      this.templatePath('package.json'),
-      this.destinationPath('package.json')
-    );
+    mkdirp(this.destinationPath('src'));
+    var templates = [
+      { "src": "gitignore", "dest": ".gitignore" },
+      { "src": "package.json" },
+      { "src": "bin" },
+      { "src": "src/index.jade" },
+      { "src": "src/main.less" },
+      { "src": "src/_layout.jade" },
+      { "src": "circle.yml", "when": this.circleci },
+      { "src": "src/circle.yml", "when": this.circleci },
+      { "src": "src/CNAME", "when": typeof this.cname === 'string' }
+    ];
+
+    for (var key in templates) {
+      var template = templates[key];
+      var dest = template.dest === undefined ? template.src : template.dest;
+      if (template.when === undefined || template.when === true) {
+        this.fs.copy(
+          this.templatePath(template.src),
+          this.destinationPath(dest)
+        );
+      }
+    }
   },
 
   install: function () {
