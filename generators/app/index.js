@@ -12,12 +12,6 @@ var HarpGhPagesGenerator = yeoman.Base.extend({
         default : this.destinationRoot().split('/')[this.destinationRoot().split('/').length - 1]
       },
       {
-        type    : 'confirm',
-        name    : 'circleci',
-        message : 'Would you like to deploy with Circle CI?',
-        default : false
-      },
-      {
         type    : 'list',
         name    : 'css',
         message : 'Which CSS preprocessors do you use?',
@@ -49,6 +43,12 @@ var HarpGhPagesGenerator = yeoman.Base.extend({
         when: function(answers) {
           return answers.custom_domain;
         }
+      },
+      {
+        type    : 'confirm',
+        name    : 'circleci',
+        message : 'Would you like to deploy with Circle CI?',
+        default : false
       }
     ];
 
