@@ -61,13 +61,10 @@ var HarpGhPagesGenerator = yeoman.Base.extend({
   },
 
   configuring: function () {
-    // this.log(this.name);
-    // this.log(this.circleci);
-    // this.log(this.cname);
+    this.log(yosay('Gotcha!'));
   },
 
   writing: function () {
-    this.log(yosay('Writing files'));
     this.fs.copy(
       this.templatePath('package.json'),
       this.destinationPath('package.json')
@@ -75,7 +72,7 @@ var HarpGhPagesGenerator = yeoman.Base.extend({
   },
 
   install: function () {
-    this.log(yosay('Installing dependencies.'));
+    this.log(yosay('Install dependencies'));
     this.npmInstall();
   },
 
