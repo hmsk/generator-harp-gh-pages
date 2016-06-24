@@ -15,7 +15,7 @@ var HarpGhPagesGenerator = yeoman.Base.extend({
         type    : 'list',
         name    : 'css',
         message : 'Which CSS preprocessors do you use?',
-        choices : ['LESS', 'Stylus', 'Sass'],
+        choices : ['LESS', 'Stylus', 'SCSS', 'Sass'],
         filter  : function(val) {
           return val.toLowerCase();
         }
@@ -75,7 +75,10 @@ var HarpGhPagesGenerator = yeoman.Base.extend({
       { "src": "src/index.ejs", "when": this.html === 'ejs' },
       { "src": "src/_layout.jade", "when": this.html === 'jade' },
       { "src": "src/_layout.ejs", "when": this.html === 'ejs' },
-      { "src": "src/main.less" },
+      { "src": "src/main.less", "when": this.css === 'less' },
+      { "src": "src/main.styl", "when": this.css === 'stylus' },
+      { "src": "src/main.scss", "when": this.css === 'scss' },
+      { "src": "src/main.sass", "when": this.css === 'sass' },
       { "src": "circle.yml", "when": this.circleci },
       { "src": "src/circle.yml", "when": this.circleci },
       { "src": "src/CNAME", "when": typeof this.cname === 'string' }
