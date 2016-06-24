@@ -31,6 +31,12 @@ var HarpGhPagesGenerator = yeoman.Base.extend({
       },
       {
         type    : 'confirm',
+        name    : 'markdown',
+        message : 'Would you like to use Markdown for html content?',
+        default : false
+      },
+      {
+        type    : 'confirm',
         name    : 'custom_domain',
         message : 'Would you like to configure your custom domain for GitHub Pages?',
         default : false
@@ -56,6 +62,7 @@ var HarpGhPagesGenerator = yeoman.Base.extend({
       this.name = answers.name;
       this.css = answers.css;
       this.html = answers.html;
+      this.markdown = answers.markdown;
       this.circleci = answers.circleci;
       this.cname = answers.cname;
     }.bind(this));
@@ -71,8 +78,9 @@ var HarpGhPagesGenerator = yeoman.Base.extend({
       { "src": "gitignore", "dest": ".gitignore" },
       { "src": "package.json" },
       { "src": "bin" },
-      { "src": "src/index.jade", "when": this.html === 'jade' },
-      { "src": "src/index.ejs", "when": this.html === 'ejs' },
+      { "src": "src/index.jade", "when": !this.markdown && this.html === 'jade' },
+      { "src": "src/index.ejs", "when": !this.markdown && this.html === 'ejs' },
+      { "src": "src/index.md", "when": this.markdown },
       { "src": "src/_layout.jade", "when": this.html === 'jade' },
       { "src": "src/_layout.ejs", "when": this.html === 'ejs' },
       { "src": "src/main.less", "when": this.css === 'less' },
