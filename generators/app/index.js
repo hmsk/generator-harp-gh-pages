@@ -111,6 +111,16 @@ var HarpGhPagesGenerator = yeoman.Base.extend({
 
   end: function () {
     this.log(yosay('Finished'));
+    this.log('By running "npm run preview", you can preview your project in localhost:9000 by Harp server');
+    this.log('You can build your Harp project with "npm run compile" manually.');
+    this.log('For publishing to GitHub Page, run "npm run publish"');
+
+    if (this.cname === 'string') {
+      this.log('Setup custom domain to GitHub Pages: https://help.github.com/articles/using-a-custom-domain-with-github-pages/');
+    }
+    if (this.circleci) {
+      this.log('For setup to build and publish with Circle CI: https://circleci.com/add-projects')
+    }
   }
 });
 
