@@ -73,6 +73,11 @@ var HarpGhPagesGenerator = yeoman.Base.extend({
   },
 
   writing: function () {
+    data = {
+      title: this.name,
+      cname: this.cname,
+      layout: '<%- yield %>'
+    };
     mkdirp(this.destinationPath('src'));
     var templates = [
       { "src": "gitignore", "dest": ".gitignore" },
@@ -96,9 +101,10 @@ var HarpGhPagesGenerator = yeoman.Base.extend({
       var template = templates[key];
       var dest = template.dest === undefined ? template.src : template.dest;
       if (template.when === undefined || template.when === true) {
-        this.fs.copy(
+        this.fs.copyTpl(
           this.templatePath(template.src),
-          this.destinationPath(dest)
+          this.destinationPath(dest),
+          data
         );
       }
     }

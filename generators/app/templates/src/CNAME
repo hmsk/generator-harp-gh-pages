@@ -1,1 +1,1 @@
-awesome.example.com
+<%= cname %>
