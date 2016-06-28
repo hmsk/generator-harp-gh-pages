@@ -75,8 +75,7 @@ var HarpGhPagesGenerator = yeoman.Base.extend({
   writing: function () {
     data = {
       title: this.name,
-      cname: this.cname,
-      layout: '<%- yield %>'
+      cname: this.cname
     };
     mkdirp(this.destinationPath('src'));
     var templates = [
