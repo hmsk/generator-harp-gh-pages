@@ -1,6 +1,6 @@
 {
   "name": "generator-harp-gh-pages",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Generate a harp project with GitHub Pages and Circle CI",
   "author": "Kengo Hamasaki <k.hamasaki@gmail.com>",
   "license": "MIT",
