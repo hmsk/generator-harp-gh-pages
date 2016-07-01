@@ -115,7 +115,7 @@ var HarpGhPagesGenerator = yeoman.Base.extend({
     var self = this;
     this.npmInstall(null, null, function() {
       self.log(yosay('Running first compile'));
-      self.spawnCommand('npm', ['run', 'compile']);
+      self.spawnCommandSync('npm', ['run', 'compile']);
     });
   },
 
