@@ -1,5 +1,7 @@
 # Harp GitHub Pages Generator
 
+[![asciicast](https://asciinema.org/a/9jwmwwev0kz2gpxwqn5ftfnhs.png)](https://asciinema.org/a/9jwmwwev0kz2gpxwqn5ftfnhs)
+
 ## Run Generator
 
 ```sh
