@@ -1,6 +1,7 @@
 var yeoman = require('yeoman-generator');
 var yosay = require('yosay');
 var mkdirp = require('mkdirp');
+var chalk = require('chalk');
 
 var HarpGhPagesGenerator = yeoman.Base.extend({
   prompting: function () {
@@ -69,7 +70,7 @@ var HarpGhPagesGenerator = yeoman.Base.extend({
   },
 
   configuring: function () {
-    this.log(yosay('Gotcha!'));
+    this.log(yosay('Gotcha! Generating template files.'));
   },
 
   writing: function () {
@@ -110,24 +111,24 @@ var HarpGhPagesGenerator = yeoman.Base.extend({
   },
 
   install: function () {
-    this.log(yosay('Install dependencies'));
+    this.log(yosay('Installing dependencies.'));
     var self = this;
     this.npmInstall(null, null, function() {
+      self.log(yosay('Running first compile'));
       self.spawnCommand('npm', ['run', 'compile']);
     });
   },
 
   end: function () {
-    this.log(yosay('Finished'));
-    this.log('By running "npm run preview", you can preview your project in localhost:9000 by Harp server');
-    this.log('You can build your Harp project with "npm run compile" manually.');
-    this.log('For publishing to GitHub Page, run "npm run publish"');
-
-    if (this.cname === 'string') {
-      this.log('Setup custom domain to GitHub Pages: https://help.github.com/articles/using-a-custom-domain-with-github-pages/');
+    this.log(yosay('Finished generating.'));
+    this.log('By running ' + chalk.red.bold('npm run preview') + ', you can preview your project in ' + chalk.underline.red.bold('localhost:9000') + ' by Harp server');
+    this.log('You can build your Harp project with ' + chalk.green.bold('npm run compile') + ' manually.');
+    this.log('For publishing to GitHub Page, run ' + chalk.blue.bold('npm run publish'));
+    if (typeof this.cname === 'string') {
+      this.log('Setup custom domain to GitHub Pages: ' + chalk.underline.green.bold('https://help.github.com/articles/using-a-custom-domain-with-github-pages/'));
     }
     if (this.circleci) {
-      this.log('For setup to build and publish with Circle CI: https://circleci.com/add-projects')
+      this.log('For setup to build and publish with Circle CI: '+ chalk.underline.blue.bold('https://circleci.com/add-projects'));
     }
   }
 });
