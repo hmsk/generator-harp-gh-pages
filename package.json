@@ -4,7 +4,7 @@
   "description": "Generate your Harp project deploying with GitHub Pages, automating with Circle CI",
   "author": "Kengo Hamasaki <k.hamasaki@gmail.com> (http://hmsk.me)",
   "license": "MIT",
-  "homepage": "https://github.com/hmsk/harp-gh-pages-generator",
+  "homepage": "https://github.com/hmsk/generator-harp-gh-pages",
   "repository": {
     "type": "git",
     "url": "git://git@github.com/hmsk/generator-harp-gh-pages.git"
