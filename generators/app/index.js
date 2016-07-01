@@ -121,14 +121,18 @@ var HarpGhPagesGenerator = yeoman.Base.extend({
 
   end: function () {
     this.log(yosay('Finished generating.'));
-    this.log('By running ' + chalk.red.bold('npm run preview') + ', you can preview your project in ' + chalk.underline.red.bold('localhost:9000') + ' by Harp server');
-    this.log('You can build your Harp project with ' + chalk.green.bold('npm run compile') + ' manually.');
-    this.log('For publishing to GitHub Page, run ' + chalk.blue.bold('npm run publish'));
+    this.log(chalk.green.bold.underline('Commands:'));
+    this.log(chalk.red.bold('npm run preview') + ': you can preview your project in ' + chalk.blue.bold.underline('localhost:9000') + ' by Harp server');
+    this.log(chalk.red.bold('npm run compile') + ': build your harp project manually.');
+    this.log(chalk.red.bold('npm run publish') + ': publish to GitHub Page of projeject repository');
+
+    this.log("\n" + chalk.green.bold.underline('Others:'));
+    this.log('Harp Documentation: ' + chalk.blue.bold.underline('https://harpjs.com/docs/'));
     if (typeof this.cname === 'string') {
-      this.log('Setup custom domain to GitHub Pages: ' + chalk.underline.green.bold('https://help.github.com/articles/using-a-custom-domain-with-github-pages/'));
+      this.log('Setup custom domain to GitHub Pages: ' + chalk.blue.bold.underline('https://help.github.com/articles/using-a-custom-domain-with-github-pages/'));
     }
     if (this.circleci) {
-      this.log('For setup to build and publish with Circle CI: '+ chalk.underline.blue.bold('https://circleci.com/add-projects'));
+      this.log('For setup to build and publish with Circle CI: '+ chalk.blue.bold.underline('https://circleci.com/add-projects'));
     }
   }
 });
