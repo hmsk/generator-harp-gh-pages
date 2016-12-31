@@ -7,7 +7,7 @@
     "publish": "npm run compile && bin/publish",
     "clean": "rm -rf ./dist"
   },
-  "devDependencies": {
+  "dependencies": {
     "harp": "^0.23.0",
     "gh-pages": "^0.12.0"
   }

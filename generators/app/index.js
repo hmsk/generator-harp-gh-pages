@@ -112,10 +112,14 @@ var HarpGhPagesGenerator = yeoman.Base.extend({
 
   install: function () {
     this.log(yosay('Installing dependencies.'));
-    this.npmInstall(null, null, function() {
-      this.log(yosay('Running first compile'));
-      this.spawnCommandSync('npm', ['run', 'compile']);
-    }.bind(this));
+    this.installDependencies({
+      bower: false,
+      npm: true,
+      callback: function() {
+        this.log(yosay('Running first compile'));
+        this.spawnCommandSync('npm', ['run', 'compile']);
+      }.bind(this)
+    });
   },
 
   end: function () {
