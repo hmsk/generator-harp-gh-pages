@@ -8,7 +8,7 @@
     "clean": "rm -rf ./dist"
   },
   "devDependencies": {
-    "harp": "https://github.com/sintaxi/harp.git#v0.21.0-pre",
-    "gh-pages": "^0.11.0"
+    "harp": "^0.23.0",
+    "gh-pages": "^0.12.0"
   }
 }
