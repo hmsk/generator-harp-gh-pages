@@ -1,10 +1,10 @@
-var yeoman = require('yeoman-generator');
+var Generator = require('yeoman-generator');
 var yosay = require('yosay');
 var mkdirp = require('mkdirp');
 var chalk = require('chalk');
 
-var HarpGhPagesGenerator = yeoman.Base.extend({
-  prompting: function () {
+var HarpGhPagesGenerator = class extends Generator {
+  prompting() {
     var prompts = [
       {
         type    : 'input',
@@ -67,14 +67,14 @@ var HarpGhPagesGenerator = yeoman.Base.extend({
       this.circleci = answers.circleci;
       this.cname = answers.cname;
     }.bind(this));
-  },
+  }
 
-  configuring: function () {
+  configuring() {
     this.log(yosay('Gotcha! Generating template files.'));
-  },
+  }
 
-  writing: function () {
-    data = {
+  writing() {
+    var data = {
       title: this.name,
       cname: this.cname
     };
@@ -108,9 +108,9 @@ var HarpGhPagesGenerator = yeoman.Base.extend({
         );
       }
     }
-  },
+  }
 
-  install: function () {
+  install() {
     this.log(yosay('Installing dependencies.'));
     this.installDependencies({
       bower: false,
@@ -120,9 +120,9 @@ var HarpGhPagesGenerator = yeoman.Base.extend({
         this.spawnCommandSync('npm', ['run', 'compile']);
       }.bind(this)
     });
-  },
+  }
 
-  end: function () {
+  end() {
     this.log(yosay('Finished generating.'));
     this.log(chalk.green.bold.underline('Commands:'));
     this.log(chalk.red.bold('npm run preview') + ': you can preview your project in ' + chalk.blue.bold.underline('localhost:9000') + ' by Harp server');
@@ -138,6 +138,6 @@ var HarpGhPagesGenerator = yeoman.Base.extend({
       this.log('For setup to build and publish with Circle CI: '+ chalk.blue.bold.underline('https://circleci.com/add-projects'));
     }
   }
-});
+};
 
 module.exports = HarpGhPagesGenerator;
